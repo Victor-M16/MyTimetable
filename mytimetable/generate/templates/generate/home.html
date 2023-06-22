@@ -1,0 +1,17 @@
+{% extends 'generate/base.html' %}
+
+{% block content %}
+    
+    <div class="container">
+        <h1>Welcome to MyTimetable</h1>
+        <p>Please select the number of activities you want to include in the timetable</P>
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form }}
+            <div class="form-group">
+                <button class="btn btn-outline-info" type="submit">Choose Activities</button>
+            </div>
+        </form>
+    </div>
+
+{% endblock  %}

@@ -1,0 +1,35 @@
+{% extends 'generate/base.html' %}
+{% load custom_filters %}
+{% block content %}
+  <div class="container">
+    <h2>Generated Timetable</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Time</th>
+          {% for day in days %}
+            <th>{{ day }}</th>
+          {% endfor %}
+        </tr>
+      </thead>
+      <tbody>
+        {% for time in times %}
+          <tr>
+            <td>{{ time }}</td>
+            {% for day in days %}
+              <td>
+                {% if timetable|get_item:day|get_item:time == 'Lunch' %}
+                  Lunch
+                {% else %}
+                  {{ timetable|get_item:day|get_item:time }}
+                {% endif %}
+              </td>
+            {% endfor %}
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <a href="{% url 'download_timetable' %}" class="btn btn-primary">Download Timetable</a>
+  </div>
+{% endblock content %}

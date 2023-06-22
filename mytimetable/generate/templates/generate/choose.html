@@ -1,0 +1,18 @@
+{% extends 'generate/base.html' %}
+
+{% block content %}
+<div class="container">
+<form method="POST">
+    {% csrf_token %}
+    <fieldset class="form-group">
+        <legend class="border-bottom mb-4">You have chosen {{ total }} activities</legend>
+            {{ formset.as_p }}
+
+    </fieldset>      
+    <div class="form-group">
+        <button class="btn btn-outline-info" type="submit">Generate Timetable</button>
+    </div>
+</form>
+</div>
+
+{% endblock content %}
